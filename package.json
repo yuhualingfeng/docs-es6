@@ -1,0 +1,28 @@
+{
+  "name": "docs-es6",
+  "version": "1.0.0",
+  "description": "demos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuhualingfeng/docs-es6.git"
+  },
+  "keywords": [
+    "es6",
+    "async",
+    "Generator",
+    "class"
+  ],
+  "author": "huasheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuhualingfeng/docs-es6/issues"
+  },
+  "homepage": "https://github.com/yuhualingfeng/docs-es6#readme",
+  "dependencies": {
+    "fs-readfile-promise": "^3.0.1"
+  }
+}
