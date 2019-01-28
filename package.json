@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/yuhualingfeng/docs-es6#readme",
   "dependencies": {
-    "fs-readfile-promise": "^3.0.1"
+    "fs-readfile-promise": "^3.0.1",
+    "node-fetch": "^2.3.0"
   }
 }

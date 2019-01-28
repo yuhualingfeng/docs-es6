@@ -44,7 +44,7 @@
   * 异步方式2 Promise  优点:异步任务更清晰  缺点:代码冗余
   */
  function task3(){
-    var readFile = require('fs-readfile-promise');
+    const readFile = require('fs-readfile-promise');
     readFile('../package.json').then(function(data){
         console.log(data.toString());
     }).then(function(){
@@ -53,7 +53,30 @@
         console.log(data.toString());
     });
  }
- task3();
+ //task3();
+
+
+ /**
+  * 异步方式3 Generator
+  */
+ function task4(){
+     function* gen(){
+        const fetch = require('node-fetch');
+        let data = yield fetch('https://api.github.com/users/yuhualingfeng');
+        console.log(data);
+        return data;         
+     }
+
+     let g = gen();
+     let result = g.next();
+     result.value.then(function(data){
+        return data.json();
+     }).then(function(data){
+        g.next(data);
+     });
+
+ }
+ task4();
 
 
 
