@@ -76,7 +76,81 @@
      });
 
  }
- task4();
+ // task4();
+
+ /**
+  *Generator 函数的流程管理
+  *
+  */
+ function task5(){
+     const fs = require('fs');
+     const thunkify = require('thunkify');
+     const readFileThunk = thunkify(fs.readFile);
+
+     function* gen(){
+         let result1 = yield readFileThunk('../package.json');
+         console.log(result1.toString());
+         let result2 = yield readFileThunk('../README.MD');
+         console.log(result2.toString());
+     }
+
+     const g = gen();
+     const r1 = g.next();
+
+
+     r1.value(function(error,data){
+         if(error){
+             throw new Error(error);
+         }
+         const r2 = g.next(data);
+         r2.value(function(error,data){
+             if(error){
+                 throw new Error(error);
+             }
+             g.next(data);
+         })
+
+     })
+
+ }
+ // task5();
+
+ /**
+  *Thunk 函数的自动流程管理
+  *
+  */
+ function task6(){
+    const fs = require('fs');
+    const thunkify = require('thunkify');
+    const readFileThunk = thunkify(fs.readFile);
+
+    function* gen(){
+        let result1 = yield readFileThunk('../package.json');
+        console.log(result1.toString());
+        let result2 = yield readFileThunk('../README.MD');
+        console.log(result2.toString());
+    }
+
+    // 自动化函数
+    function run(gen){ 
+        let g = gen();
+        function next(error,data){
+            let result =  g.next(data);
+            if(result.done){
+                return ;
+            }else{
+               result.value(next);
+            }
+        }
+
+        next();
+    }
+
+    run(gen);
+
+ }
+ task6();
+
 
 
 
