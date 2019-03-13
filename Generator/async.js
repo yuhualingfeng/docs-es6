@@ -18,7 +18,7 @@
         console.log(data);
      });
  }
- //task1();
+ task1();
 
  /**
  * 异步方式1 回调函数缺陷演示
@@ -143,13 +143,13 @@
             }
         }
 
-        next();
+        next(); 
     }
 
     run(gen);
 
  }
- task6();
+//  task6();
 
 
 
