@@ -14,7 +14,7 @@ function task1(){
 
 // 异常捕获
 function task2(){
-    let promise = new Promise((resolve,reject)=>{
+    const promise = new Promise((resolve,reject)=>{
         resolve(x + 2);
     });
     promise.then((value)=>{
@@ -28,7 +28,7 @@ function task2(){
 
 // 始终执行,Promise.prototype.finally
 function task3(){
-    let promise = new Promise((resolve,reject)=>{
+    const promise = new Promise((resolve,reject)=>{
         setTimeout(()=>{
             resolve(1);
         },2000)
@@ -44,3 +44,45 @@ function task3(){
 //task3();
 
 // Promise.all
+function task4(){
+    const promise1 = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve('promise1');
+        },2000);
+    });
+
+    const promise2 = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve('promise2');
+        },3000);
+
+    });
+
+    Promise.all([promise1,promise2]).then((result)=>{
+        console.log(result);
+    });
+
+}
+// task4();
+
+// Promise.race
+function task5(){
+    const promise1 = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve('promise1');
+        },2000);
+    });
+
+    const promise2 = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve('promise2');
+        },3000);
+
+    });
+
+    Promise.race([promise1,promise2]).then((result)=>{
+        console.log(result);
+    });
+}
+
+task5();
